@@ -28,106 +28,105 @@ export function TopOffersModal() {
 
   return (
     <Dialog open={showModal} onOpenChange={setShowModal}>
-      <DialogContent className="max-w-[95vw] w-full sm:max-w-lg p-0 border-0 mx-2">
-        <div className="relative">
-          <Card className="border-0">
-            <CardHeader className="text-center portugal-gradient text-white relative p-4 sm:p-6">
-              <button
-                onClick={() => setShowModal(false)}
-                className="absolute top-2 right-2 sm:top-3 sm:right-3 text-white hover:text-gray-200 transition-colors"
-                aria-label="Fechar modal"
-              >
-                <X className="w-5 h-5 sm:w-6 sm:h-6" />
-              </button>
-              <CardTitle className="text-lg sm:text-xl lg:text-2xl pt-2 pr-8">🎯 Top 3 Melhores Ofertas!</CardTitle>
-            </CardHeader>
-            <CardContent className="p-3 sm:p-4 lg:p-6">
-              <div className="space-y-3 sm:space-y-4">
-                {topOffers.map((offer, index) => (
-                  <div key={offer.id} className="border rounded-lg hover:bg-gray-50 transition-colors">
-                    {/* Mobile Layout */}
-                    <div className="block sm:hidden p-3">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="text-lg font-bold text-yellow-600">#{index + 1}</div>
-                        <div className="flex">
-                          {[...Array(5)].map((_, i) => (
-                            <Star
-                              key={i}
-                              className={`w-3 h-3 ${i < Math.floor(offer.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
-                                }`}
-                            />
-                          ))}
-                        </div>
+      <DialogContent className="w-[95vw] max-w-md sm:max-w-lg p-0 border-0 max-h-[85vh] flex flex-col">
+        <Card className="border-0 w-full flex flex-col h-full">
+          <CardHeader className="text-center portugal-gradient text-white relative p-3 flex-shrink-0">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-2 right-2 text-white hover:text-gray-200 transition-colors z-10 bg-black/20 rounded-full p-1"
+              aria-label="Fechar modal"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <CardTitle className="text-lg pr-8">🎯 Top 3 Ofertas!</CardTitle>
+          </CardHeader>
+
+          <CardContent className="p-3 flex-1 overflow-hidden">
+            <div className="space-y-3 h-full flex flex-col">
+              {topOffers.map((offer, index) => (
+                <div key={offer.id} className="border rounded-lg hover:bg-gray-50 transition-colors flex-1 min-h-0">
+                  {/* Mobile Layout (< 640px) */}
+                  <div className="block sm:hidden p-2 h-full">
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="text-sm font-bold text-yellow-600">#{index + 1}</div>
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`w-2.5 h-2.5 ${i < Math.floor(offer.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                              }`}
+                          />
+                        ))}
                       </div>
-                      <div className="text-center mb-3">
-                        <Image
-                          src={offer.logo || "/placeholder.svg"}
-                          alt={offer.name}
-                          width={80}
-                          height={32}
-                          className="object-contain mx-auto mb-2"
-                        />
-                        <h3 className="font-semibold text-sm">{offer.name}</h3>
-                        <p className="text-xs text-gray-600 mb-1">{offer.description}</p>
-                        <p className="text-green-600 font-bold text-sm">{offer.bonus}</p>
-                        <p className="text-xs text-gray-500 mt-1">
-                          {offer.rating}/5 ({offer.reviews} avaliações)
-                        </p>
-                      </div>
-                      <Button asChild className="portugal-gradient text-white w-full text-sm">
-                        <a href={offer.url} target="_blank" rel="noopener noreferrer">
-                          Obter Agora
-                        </a>
-                      </Button>
                     </div>
 
-                    {/* Desktop Layout */}
-                    <div className="hidden sm:flex items-center justify-between p-4">
-                      <div className="flex items-center space-x-4">
-                        <div className="text-2xl font-bold text-yellow-600">#{index + 1}</div>
-                        <Image
-                          src={offer.logo || "/placeholder.svg"}
-                          alt={offer.name}
-                          width={100}
-                          height={40}
-                          className="object-contain"
-                        />
-                        <div>
-                          <h3 className="font-semibold">{offer.name}</h3>
-                          <p className="text-xs text-gray-600">{offer.description}</p>
-                          <p className="text-green-600 font-bold">{offer.bonus}</p>
-                          <div className="flex items-center space-x-2 mt-1">
-                            <div className="flex">
-                              {[...Array(5)].map((_, i) => (
-                                <Star
-                                  key={i}
-                                  className={`w-3 h-3 ${i < Math.floor(offer.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
-                                    }`}
-                                />
-                              ))}
-                            </div>
-                            <span className="text-xs text-gray-500">
-                              {offer.rating}/5 ({offer.reviews})
-                            </span>
+                    <div className="flex items-center space-x-2 mb-2">
+                      <Image
+                        src={offer.logo || "/placeholder.svg"}
+                        alt={offer.name}
+                        width={50}
+                        height={20}
+                        className="object-contain flex-shrink-0"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-xs truncate">{offer.name}</h3>
+                        <p className="text-green-600 font-bold text-xs truncate">{offer.bonus}</p>
+                      </div>
+                    </div>
+
+                    <Button asChild className="portugal-gradient text-white w-full text-xs py-1.5 h-auto">
+                      <a href={offer.url} target="_blank" rel="noopener noreferrer">
+                        Obter Agora
+                      </a>
+                    </Button>
+                  </div>
+
+                  {/* Desktop Layout (>= 640px) */}
+                  <div className="hidden sm:flex items-center justify-between p-3 h-full">
+                    <div className="flex items-center space-x-3 flex-1 min-w-0">
+                      <div className="text-lg font-bold text-yellow-600 flex-shrink-0">#{index + 1}</div>
+                      <Image
+                        src={offer.logo || "/placeholder.svg"}
+                        alt={offer.name}
+                        width={80}
+                        height={32}
+                        className="object-contain flex-shrink-0"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-sm truncate">{offer.name}</h3>
+                        <p className="text-green-600 font-bold text-sm truncate">{offer.bonus}</p>
+                        <div className="flex items-center space-x-1 mt-1">
+                          <div className="flex">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`w-3 h-3 ${i < Math.floor(offer.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                                  }`}
+                              />
+                            ))}
                           </div>
+                          <span className="text-xs text-gray-500">{offer.rating}/5</span>
                         </div>
                       </div>
-                      <Button asChild className="portugal-gradient text-white">
-                        <a href={offer.url} target="_blank" rel="noopener noreferrer">
-                          Obter Agora
-                        </a>
-                      </Button>
                     </div>
+                    <Button asChild className="portugal-gradient text-white flex-shrink-0 ml-2">
+                      <a href={offer.url} target="_blank" rel="noopener noreferrer">
+                        Obter
+                      </a>
+                    </Button>
                   </div>
-                ))}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-3 text-center flex-shrink-0">
+              <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
+                <span className="bg-red-600 text-white px-2 py-1 rounded">18+</span>
+                <span>Jogue com responsabilidade</span>
               </div>
-              <div className="mt-4 sm:mt-6 text-center text-xs sm:text-sm text-gray-500">
-                <span className="bg-red-600 text-white px-2 py-1 rounded mr-2">18+</span>
-                Aplicam-se termos e condições. Jogue com responsabilidade.
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
+          </CardContent>
+        </Card>
       </DialogContent>
     </Dialog>
   )
