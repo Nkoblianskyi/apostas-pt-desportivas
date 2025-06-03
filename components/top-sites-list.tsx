@@ -1,39 +1,17 @@
 import { BettingSiteCard } from "./betting-site-card"
 import { ScrollAnimations } from "./scroll-animations"
-
-const topSites = [
-  {
-    id: 1,
-    name: "Casino Portugal",
-    url: "https://www.casinoportugal.pt/",
-    logo: "/portugal.png",
-    bonus: "50% até 100€",
-    rating: 5,
-    reviews: 41250,
-    featured: true,
-    description: "BÓNUS DE BOAS-VINDAS",
-  },
-  {
-    id: 2,
-    name: "Solverde",
-    url: "https://www.solverde.pt/",
-    logo: "/solve.png",
-    bonus: "Bónus de 30€ oferecido",
-    rating: 4.8,
-    reviews: 39987,
-    featured: false,
-    description: "BÓNUS DE BOAS-VINDAS",
-  },
-]
+import { topSites } from "@/data/betting-sites"
 
 export function TopSitesList() {
   return (
-    <section className="py-12">
+    <section className="py-6 sm:py-8 lg:py-12">
       <ScrollAnimations />
-      <div className="container mx-auto px-4 gap-3">
-        <div className="space-y-8 flex flex-col gap-[5px]">
+      <div className="container mx-auto px-2 sm:px-4">
+        <div className="space-y-3 sm:space-y-4 lg:space-y-6 max-w-6xl mx-auto">
           {topSites.map((site, index) => (
-            <BettingSiteCard key={site.id} site={site} rank={index + 1} />
+            <div key={site.id} className="w-full">
+              <BettingSiteCard site={site} rank={index + 1} />
+            </div>
           ))}
         </div>
       </div>

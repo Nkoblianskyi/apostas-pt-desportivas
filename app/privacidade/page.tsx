@@ -56,9 +56,6 @@ export default function PrivacidadePage() {
                 <strong>privacidade@apostasptdesportivas.com</strong>
               </p>
 
-              <p className="text-sm text-gray-600">
-                <strong>Última atualização:</strong> Janeiro 2024
-              </p>
             </CardContent>
           </Card>
         </div>

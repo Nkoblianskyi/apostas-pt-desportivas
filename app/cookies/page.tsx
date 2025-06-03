@@ -51,10 +51,6 @@ export default function CookiesPage() {
                 Se tiver questões sobre esta política de cookies, pode contactar-nos através do email:
                 <strong>info@apostasptdesportivas.com</strong>
               </p>
-
-              <p className="text-sm text-gray-600">
-                <strong>Última atualização:</strong> Janeiro 2024
-              </p>
             </CardContent>
           </Card>
         </div>

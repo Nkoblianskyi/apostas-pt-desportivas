@@ -9,11 +9,11 @@ export function Header() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/placeholder.svg?height=50&width=50"
+              src="/logo.png"
               alt="Apostas PT Logo"
-              width={50}
-              height={50}
-              className="rounded-full"
+              width={35}
+              height={35}
+              className=""
             />
             <h1 className="text-xl md:text-2xl font-bold text-gray-800">Apostas PT Desportivas</h1>
           </Link>

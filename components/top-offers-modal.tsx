@@ -4,26 +4,15 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
-import { X } from "lucide-react"
+import { X, Star } from "lucide-react"
 import Image from "next/image"
-
-const topOffers = [
-  {
-    name: "Casino Portugal",
-    bonus: "50% até 100€",
-    url: "https://www.casinoportugal.pt/",
-    logo: "/placeholder.svg?height=60&width=150",
-  },
-  {
-    name: "Solverde",
-    bonus: "Bónus de 30€",
-    url: "https://www.solverde.pt/",
-    logo: "/placeholder.svg?height=60&width=150",
-  },
-]
+import { topSites } from "@/data/betting-sites"
 
 export function TopOffersModal() {
   const [showModal, setShowModal] = useState(false)
+
+  // Берем только первые 3 сайта из топ списка
+  const topOffers = topSites.slice(0, 3)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,7 +28,7 @@ export function TopOffersModal() {
 
   return (
     <Dialog open={showModal} onOpenChange={setShowModal}>
-      <DialogContent className="max-w-[95vw] w-full sm:max-w-md p-0 border-0 mx-2">
+      <DialogContent className="max-w-[95vw] w-full sm:max-w-lg p-0 border-0 mx-2">
         <div className="relative">
           <Card className="border-0">
             <CardHeader className="text-center portugal-gradient text-white relative p-4 sm:p-6">
@@ -50,14 +39,26 @@ export function TopOffersModal() {
               >
                 <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
-              <CardTitle className="text-lg sm:text-xl lg:text-2xl pt-2 pr-8">🎯 Melhores Ofertas Hoje!</CardTitle>
+              <CardTitle className="text-lg sm:text-xl lg:text-2xl pt-2 pr-8">🎯 Top 3 Melhores Ofertas!</CardTitle>
             </CardHeader>
             <CardContent className="p-3 sm:p-4 lg:p-6">
               <div className="space-y-3 sm:space-y-4">
                 {topOffers.map((offer, index) => (
-                  <div key={index} className="border rounded-lg hover:bg-gray-50 transition-colors">
+                  <div key={offer.id} className="border rounded-lg hover:bg-gray-50 transition-colors">
                     {/* Mobile Layout */}
                     <div className="block sm:hidden p-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="text-lg font-bold text-yellow-600">#{index + 1}</div>
+                        <div className="flex">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`w-3 h-3 ${i < Math.floor(offer.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                                }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
                       <div className="text-center mb-3">
                         <Image
                           src={offer.logo || "/placeholder.svg"}
@@ -67,7 +68,11 @@ export function TopOffersModal() {
                           className="object-contain mx-auto mb-2"
                         />
                         <h3 className="font-semibold text-sm">{offer.name}</h3>
+                        <p className="text-xs text-gray-600 mb-1">{offer.description}</p>
                         <p className="text-green-600 font-bold text-sm">{offer.bonus}</p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          {offer.rating}/5 ({offer.reviews} avaliações)
+                        </p>
                       </div>
                       <Button asChild className="portugal-gradient text-white w-full text-sm">
                         <a href={offer.url} target="_blank" rel="noopener noreferrer">
@@ -79,6 +84,7 @@ export function TopOffersModal() {
                     {/* Desktop Layout */}
                     <div className="hidden sm:flex items-center justify-between p-4">
                       <div className="flex items-center space-x-4">
+                        <div className="text-2xl font-bold text-yellow-600">#{index + 1}</div>
                         <Image
                           src={offer.logo || "/placeholder.svg"}
                           alt={offer.name}
@@ -88,7 +94,22 @@ export function TopOffersModal() {
                         />
                         <div>
                           <h3 className="font-semibold">{offer.name}</h3>
+                          <p className="text-xs text-gray-600">{offer.description}</p>
                           <p className="text-green-600 font-bold">{offer.bonus}</p>
+                          <div className="flex items-center space-x-2 mt-1">
+                            <div className="flex">
+                              {[...Array(5)].map((_, i) => (
+                                <Star
+                                  key={i}
+                                  className={`w-3 h-3 ${i < Math.floor(offer.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                                    }`}
+                                />
+                              ))}
+                            </div>
+                            <span className="text-xs text-gray-500">
+                              {offer.rating}/5 ({offer.reviews})
+                            </span>
+                          </div>
                         </div>
                       </div>
                       <Button asChild className="portugal-gradient text-white">

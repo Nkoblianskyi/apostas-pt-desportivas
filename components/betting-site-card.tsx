@@ -3,18 +3,7 @@ import Link from "next/link"
 import { Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-
-interface BettingSite {
-  id: number
-  name: string
-  url: string
-  logo: string
-  bonus: string
-  rating: number
-  reviews: number
-  featured: boolean
-  description: string
-}
+import type { BettingSite } from "@/data/betting-sites"
 
 interface BettingSiteCardProps {
   site: BettingSite
@@ -26,8 +15,8 @@ export function BettingSiteCard({ site, rank }: BettingSiteCardProps) {
     <Link href={site.url} target="_blank" rel="noopener noreferrer">
       <Card
         className={`card-hover animate-on-scroll ${site.featured
-          ? "ring-2 sm:ring-4 ring-yellow-400 bg-gradient-to-r from-yellow-50 to-orange-50 glow-animation"
-          : "bg-white"
+            ? "ring-2 sm:ring-4 ring-yellow-400 bg-gradient-to-r from-yellow-50 to-orange-50 glow-animation"
+            : "bg-white"
           }`}
       >
         <CardContent className="p-3 sm:p-4 lg:p-6">
@@ -153,15 +142,13 @@ export function BettingSiteCard({ site, rank }: BettingSiteCardProps) {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="text-center">
-                    <Image
-                      src={site.logo || "/placeholder.svg"}
-                      alt={`${site.name} logo`}
-                      width={150}
-                      height={80}
-                      className="object-contain float-animation "
-                    />
-                  </div>
+                  <Image
+                    src={site.logo || "/placeholder.svg"}
+                    alt={`${site.name} logo`}
+                    width={120}
+                    height={60}
+                    className="object-contain float-animation"
+                  />
 
                   <div>
                     <h3 className="text-xl font-bold text-gray-800">{site.name}</h3>

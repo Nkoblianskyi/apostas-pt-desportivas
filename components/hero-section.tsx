@@ -23,7 +23,7 @@ export function HeroSection() {
         <div className="flex items-center justify-center space-x-4 mb-6 fade-in">
           <h2 className="text-4xl font-bold text-white drop-shadow-lg">Ranking Top Sites de Apostas Portugal</h2>
           <Image
-            src="/placeholder.svg?height=40&width=60"
+            src="/logo.png"
             alt="Bandeira de Portugal"
             width={60}
             height={40}
