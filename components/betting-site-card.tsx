@@ -22,9 +22,9 @@ export function BettingSiteCard({ site, rank }: BettingSiteCardProps) {
         <CardContent className="p-3 sm:p-4 lg:p-6">
           {/* Mobile Layout (< 640px) */}
           <div className="block sm:hidden">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-2">
               <div
-                className={`text-xl font-bold ${site.featured ? "text-yellow-600 pulse-animation" : "text-gray-400"}`}
+                className={`text-lg font-bold ${site.featured ? "text-yellow-600 pulse-animation" : "text-gray-400"}`}
               >
                 #{rank}
               </div>
@@ -39,12 +39,12 @@ export function BettingSiteCard({ site, rank }: BettingSiteCardProps) {
               </div>
             </div>
 
-            <div className="text-center mb-4">
+            <div className="text-center mb-3">
               <Image
                 src={site.logo || "/placeholder.svg"}
                 alt={`${site.name} logo`}
-                width={100}
-                height={50}
+                width={90}
+                height={45}
                 className="object-contain mx-auto mb-2 float-animation"
               />
               <h3 className="text-lg font-bold text-gray-800 mb-1">{site.name}</h3>
@@ -64,7 +64,7 @@ export function BettingSiteCard({ site, rank }: BettingSiteCardProps) {
               </Button>
             </div>
 
-            <div className="pt-3 border-t border-gray-200 flex flex-wrap items-center justify-center gap-2 text-xs text-gray-500">
+            <div className="pt-2 border-t border-gray-200 flex flex-wrap items-center justify-center gap-2 text-xs text-gray-500">
               <span className="bg-red-600 text-white px-2 py-1 rounded">18+</span>
               <span>Jogo Responsável</span>
               <span>•</span>

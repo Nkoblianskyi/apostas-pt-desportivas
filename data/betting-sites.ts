@@ -28,7 +28,7 @@ export const topSites: BettingSite[] = [
     url: "https://www.solverde.pt/",
     logo: "/solve.png",
     bonus: "Bónus de 30€ oferecido",
-    rating: 4.8,
+    rating: 5,
     reviews: 28983,
     featured: false,
     description: "BÓNUS DE BOAS-VINDAS",
