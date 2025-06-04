@@ -24,6 +24,16 @@ export function Footer() {
                   Jogo Responsável
                 </Link>
               </li>
+              <li>
+                <Link href="/cookies" className="text-gray-400 hover:text-white">
+                  Política de Cookies
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacidade" className="text-gray-400 hover:text-white">
+                  Política de Privacidade
+                </Link>
+              </li>
             </ul>
           </div>
 
