@@ -116,9 +116,9 @@ export function TopOffersModal() {
                     </div>
                   </div>
 
-                  <div className="text-right">
-                    <p className="text-lg font-bold text-green-600">{offer.bonus}</p>
-                    <div className="portugal-gradient text-white px-4 py-2 rounded text-sm font-semibold mt-1">
+                  <div className="text-right flex flex-col items-end">
+                    <p className="text-lg font-bold text-green-600 border border-green-600 rounded p-2 shadow-xl">{offer.bonus}</p>
+                    <div className="portugal-gradient text-white px-4 py-2 rounded text-sm font-semibold mt-1 max-w-[120px] items-end">
                       Obter Agora
                     </div>
                   </div>

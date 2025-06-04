@@ -45,7 +45,7 @@ export function Header() {
       </div>
 
       {/* News Ticker */}
-      <div className="bg-red-600 text-white py-2 overflow-hidden w-full">
+      {/* <div className="bg-red-600 text-white py-2 overflow-hidden w-full">
         <div className="w-full px-2 sm:px-4">
           <div className="flex items-center whitespace-nowrap overflow-hidden">
             <div className="flex items-center space-x-4 sm:space-x-8 animate-scroll">
@@ -76,7 +76,7 @@ export function Header() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </header>
   )
 }
